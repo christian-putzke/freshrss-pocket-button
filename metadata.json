@@ -1,0 +1,8 @@
+{
+	"name": "Pocket Button",
+	"author": "Christian Putzke",
+	"description": "Add articles to Pocket with one simple button click or a keyboard shortcut.",
+	"version": 0.1,
+	"entrypoint": "PocketButton",
+	"type": "user"
+}
