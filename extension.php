@@ -6,6 +6,7 @@ class PocketButtonExtension extends Minz_Extension {
 
 		Minz_View::appendScript($this->getFileUrl('jquerymin.js', 'js'), false, false, false);
 		Minz_View::appendScript($this->getFileUrl('script.js', 'js'), false, false, false);
+		Minz_View::appendStyle($this->getFileUrl('style.css', 'css'));
 
 		$this->registerController('pocketButton');
 		$this->registerViews();
