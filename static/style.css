@@ -1,3 +1,13 @@
-.notification {
+.notification.pocket_button_good,
+.notification.pocket_button_bad {
     position: fixed;
+    color: #fff;
+}
+
+.notification.pocket_button_bad {
+    background: #e74c3c;
+}
+
+.notification.pocket_button_good {
+    background: #1abc9c;
 }

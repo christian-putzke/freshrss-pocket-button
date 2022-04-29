@@ -80,6 +80,7 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 		);
 
 		$result = $this->curlPostRequest('https://getpocket.com/v3/add', $post_data);
+		$result['response'] = array('title' => $entry->title());
 
 		echo json_encode($result);
 	}

@@ -30,16 +30,16 @@ function add_to_pocket(active) {
 
         if (response.status === 200) {
             // TODO: Add loca
-            openNotification("worked :)", 'good');
+            openNotification('Article <i>"' + response.response.title + '"</i> successfully added to Pocket!', 'pocket_button_good');
         } else {
             // TODO: Add loca
-            openNotification("failed :(", 'bad');
+            openNotification('Failed to add article to pocket :(', 'pocket_button_bad');
         }
     }).fail(function(data) {
         let response = JSON.parse(data);
 
         // TODO: Add loca
-        openNotification("failed :(", 'bad');
+        openNotification('Failed to add article to pocket :(', 'pocket_button_bad');
         delete pending_entries[active.attr('id')];
     });
 }
