@@ -30,10 +30,13 @@ $lazyload = FreshRSS_Context::$user_conf->lazyload;
 			echo _i($this->entry->isFavorite() ? 'starred' : 'non-starred'); ?></a><?php
 			?></li><?php
 		}
+
+		$extension = Minz_ExtensionManager::findExtension('Pocket Button');
+		$pocket_button_icon = $extension->getFileUrl('add_to_pocket.svg', 'svg');
 		?>
 		<li class="item manage"><?php
 			$arUrl = array('c' => 'pocketButton', 'a' => 'share', 'params' => array('id' => $this->entry->id()));
-			?><a class="pocketButton" href="<?php echo Minz_Url::display($arUrl); ?>">P<img src="" /></a><?php
+			?><a class="pocketButton" href="<?php echo Minz_Url::display($arUrl); ?>"><img class="icon" src="<?= $pocket_button_icon ?>" /></a><?php
 			?></li>
 		<?php
 	}

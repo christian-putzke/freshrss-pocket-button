@@ -8,7 +8,9 @@ function add_to_pocket(active) {
     if (url === undefined) {
         return false;
     }
-    pocketButton.text('.');
+
+    var pocketButtonImg = pocketButton.find("img");
+    pocketButtonImg.attr("src", pocket_button_vars.icon_adding_to_pocket);
 
     if (pending_entries[active.attr('id')]) {
         return false;
@@ -26,7 +28,7 @@ function add_to_pocket(active) {
     }).done(function(data) {
         let response = JSON.parse(data);
         delete pending_entries[active.attr('id')];
-        pocketButton.text('✓');
+        pocketButtonImg.attr("src", pocket_button_vars.icon_added_to_pocket);
 
         if (response.status === 200) {
             // TODO: Add loca
@@ -37,6 +39,8 @@ function add_to_pocket(active) {
         }
     }).fail(function(data) {
         let response = JSON.parse(data);
+
+        pocketButtonImg.attr("src", pocket_button_vars.icon_add_to_pocket);
 
         // TODO: Add loca
         openNotification('Failed to add article to pocket :(', 'pocket_button_bad');

@@ -7,6 +7,9 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 		$extension = Minz_ExtensionManager::findExtension('Pocket Button');
 
 		$this->view->keyboard_shortcut = FreshRSS_Context::$user_conf->pocket_keyboard_shortcut;
+		$this->view->icon_add_to_pocket = $extension->getFileUrl('add_to_pocket.svg', 'svg');
+		$this->view->icon_adding_to_pocket = $extension->getFileUrl('adding_to_pocket.svg', 'svg');
+		$this->view->icon_added_to_pocket = $extension->getFileUrl('added_to_pocket.svg', 'svg');
 
 		$this->view->_layout(false);
 		$this->view->_path('pocketButton/vars.js');
