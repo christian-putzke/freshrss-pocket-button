@@ -2,6 +2,18 @@
 
 class FreshExtension_pocketButton_Controller extends Minz_ActionController
 {
+	public function jsVarsAction()
+	{
+		$extension = Minz_ExtensionManager::findExtension('Pocket Button');
+
+		$this->view->keyboard_shortcut = FreshRSS_Context::$user_conf->pocket_keyboard_shortcut;
+
+		$this->view->_layout(false);
+		$this->view->_path('pocketButton/vars.js');
+
+		header('Content-Type: application/javascript');
+	}
+
 	public function authorizeAction()
 	{
 		$post_data = array(

@@ -51,16 +51,16 @@ $(document).ready(function() {
         return false;
     });
 
-    $(this).keydown(function(e) {
-        if (e.target.closest('input, textarea') || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) {
-            return true;
-        }
+    if (pocket_button_vars.keyboard_shortcut) {
+        $(this).keydown(function(e) {
+            if (e.target.closest('input, textarea') || e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) {
+                return true;
+            }
 
-        var active = $('#stream .flux.active');
-        var shortcut = 'b'; // TODO: Fix hardcoded shortcut
-
-        if (e.key === shortcut) {
-            add_to_pocket(active);
-        }
-    });
+            if (e.key === pocket_button_vars.keyboard_shortcut) {
+                var active = $('#stream .flux.active');
+                add_to_pocket(active);
+            }
+        });
+    }
 });
