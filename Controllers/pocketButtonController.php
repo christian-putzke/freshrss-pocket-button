@@ -6,15 +6,25 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 	{
 		$extension = Minz_ExtensionManager::findExtension('Pocket Button');
 
-		$this->view->keyboard_shortcut = FreshRSS_Context::$user_conf->pocket_keyboard_shortcut;
-		$this->view->icon_add_to_pocket = $extension->getFileUrl('add_to_pocket.svg', 'svg');
-		$this->view->icon_adding_to_pocket = $extension->getFileUrl('adding_to_pocket.svg', 'svg');
-		$this->view->icon_added_to_pocket = $extension->getFileUrl('added_to_pocket.svg', 'svg');
+		$this->view->pocket_button_vars = json_encode(array(
+			'keyboard_shortcut' => FreshRSS_Context::$user_conf->pocket_keyboard_shortcut,
+			'icons' => array(
+				'add_to_pocket' => $extension->getFileUrl('add_to_pocket.svg', 'svg'),
+				'adding_to_pocket' => $extension->getFileUrl('adding_to_pocket.svg', 'svg'),
+				'added_to_pocket' => $extension->getFileUrl('added_to_pocket.svg', 'svg'),
+			),
+			'i18n' => array(
+				'added_article_to_pocket' => _t('ext.pocketButton.notifications.added_article_to_pocket', '%s'),
+				'failed_to_add_article_to_pocket' => _t('ext.pocketButton.notifications.failed_to_add_article_to_pocket', '%s'),
+				'ajax_request_failed' => _t('ext.pocketButton.notifications.ajax_request_failed'),
+				'article_not_found' => _t('ext.pocketButton.notifications.article_not_found'),
+			)
+		));
 
 		$this->view->_layout(false);
 		$this->view->_path('pocketButton/vars.js');
 
-		header('Content-Type: application/javascript');
+		header('Content-Type: application/javascript; charset=utf-8');
 	}
 
 	public function authorizeAction()
@@ -32,14 +42,12 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 			FreshRSS_Context::$user_conf->pocket_access_token = $result['response']->access_token;
 			FreshRSS_Context::$user_conf->save();
 
-			// TODO: Add proper localization
-			Minz_Request::good('authorized!', $url_redirect);
+			Minz_Request::good(_t('ext.pocketButton.notifications.authorized_success'), $url_redirect);
 		} else {
-			// TODO: Add proper error localizations
 			if ($result['errorCode'] == 158) {
-				Minz_Request::bad('aborted!', $url_redirect);
+				Minz_Request::bad(_t('ext.pocketButton.notifications.authorized_aborted'), $url_redirect);
 			} else {
-				Minz_Request::bad('error' . $result['errorCode'], $url_redirect);
+				Minz_Request::bad(_t('ext.pocketButton.notifications.authorized_failed', $result['errorCode']), $url_redirect);
 			}
 		}
 	}
@@ -63,9 +71,8 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 
 			Minz_Request::forward($pocket_redirect_url);
 		} else {
-			// TODO: Add proper error localizations
 			$url_redirect = array('c' => 'extension', 'a' => 'configure', 'params' => array('e' => 'Pocket Button'));
-			Minz_Request::bad('Error ' . $result['errorCode'], $url_redirect);
+			Minz_Request::bad(_t('ext.pocketButton.notifications.request_access_failed', $result['errorCode']), $url_redirect);
 		}
 	}
 
@@ -78,11 +85,7 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 		$entry = $entry_dao->searchById($entry_id);
 
 		if ($entry === null) {
-			// TODO: Add proper error localizations
-			echo json_encode(array(
-				'content' => 'Entry with ID ' . $entry_id . ' not found!',
-				'status' => 404
-			));
+			echo json_encode(array('status' => 404));
 			return;
 		}
 
@@ -96,7 +99,7 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 
 		$result = $this->curlPostRequest('https://getpocket.com/v3/add', $post_data);
 		$result['response'] = array('title' => $entry->title());
-
+		
 		echo json_encode($result);
 	}
 

@@ -10,7 +10,7 @@ function add_to_pocket(active) {
     }
 
     var pocketButtonImg = pocketButton.find("img");
-    pocketButtonImg.attr("src", pocket_button_vars.icon_adding_to_pocket);
+    pocketButtonImg.attr("src", pocket_button_vars.icons.adding_to_pocket);
 
     if (pending_entries[active.attr('id')]) {
         return false;
@@ -28,22 +28,22 @@ function add_to_pocket(active) {
     }).done(function(data) {
         let response = JSON.parse(data);
         delete pending_entries[active.attr('id')];
-        pocketButtonImg.attr("src", pocket_button_vars.icon_added_to_pocket);
 
         if (response.status === 200) {
-            // TODO: Add loca
-            openNotification('Article <i>"' + response.response.title + '"</i> successfully added to Pocket!', 'pocket_button_good');
+            pocketButtonImg.attr("src", pocket_button_vars.icons.added_to_pocket);
+            openNotification(pocket_button_vars.i18n.added_article_to_pocket.replace('%s', response.response.title), 'pocket_button_good');
         } else {
-            // TODO: Add loca
-            openNotification('Failed to add article to pocket :(', 'pocket_button_bad');
+            pocketButtonImg.attr("src", pocket_button_vars.icons.add_to_pocket);
+            if (response.status === 404) {
+                openNotification(pocket_button_vars.i18n.article_not_found, 'pocket_button_bad');
+            } else {
+                openNotification(pocket_button_vars.i18n.failed_to_add_article_to_pocket.replace('%s', response.errorCode), 'pocket_button_bad');
+            }
         }
     }).fail(function(data) {
-        let response = JSON.parse(data);
+        pocketButtonImg.attr("src", pocket_button_vars.icons.add_to_pocket);
 
-        pocketButtonImg.attr("src", pocket_button_vars.icon_add_to_pocket);
-
-        // TODO: Add loca
-        openNotification('Failed to add article to pocket :(', 'pocket_button_bad');
+        openNotification(pocket_button_vars.i18n.ajax_request_failed, 'pocket_button_bad');
         delete pending_entries[active.attr('id')];
     });
 }

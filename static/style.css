@@ -2,6 +2,8 @@
 .notification.pocket_button_bad {
     position: fixed;
     color: #fff;
+    left: 20%;
+    right: 20%;
 }
 
 .notification.pocket_button_bad {
