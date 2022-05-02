@@ -8,16 +8,9 @@
 <form action="<?php echo _url('extension', 'configure', 'e', urlencode($this->getName())); ?>" method="post">
 	<input type="hidden" name="_csrf" value="<?php echo FreshRSS_Auth::csrfToken(); ?>" />
 	<div class="form-group">
-		<label class="group-name" for="consumer_key"><?php echo _t('ext.pocketButton.configure.consumer_key'); ?></label>
-		<div class="group-controls">
-			<input type="text" name="consumer_key" id="consumer_key" value="<?php echo $consumer_key; ?>">
-		</div>
-	</div>
-
-	<div class="form-group">
 		<label class="group-name" for="keyboard_shortcut"><?php echo _t('ext.pocketButton.configure.keyboard_shortcut'); ?></label>
 		<div class="group-controls">
-			<input type="text" name="keyboard_shortcut" id="keyboard_shortcut" value="<?php echo $keyboard_shortcut; ?>">
+			<input type="text" name="keyboard_shortcut" id="keyboard_shortcut" maxlength="1" value="<?php echo $keyboard_shortcut; ?>">
 		</div>
 	</div>
 
@@ -28,36 +21,33 @@
 	</div>
 </form>
 
-<?php if (!empty($consumer_key) && $this->isEnabled()): ?>
+<?php if ($this->isEnabled()): ?>
 <form action="<?php echo _url('pocketButton', 'requestAccess'); ?>" method="post">
 	<input type="hidden" name="_csrf" value="<?php echo FreshRSS_Auth::csrfToken(); ?>" />
 	<div class="form-group">
-		<label class="group-name"><?php echo _t('ext.pocketButton.configure.consumer_key'); ?></label>
+		<label class="group-name" for="consumer_key"><?php echo _t('ext.pocketButton.configure.consumer_key'); ?></label>
 		<div class="group-controls">
-			<?php echo $consumer_key; ?>
+			<input type="text" name="consumer_key" id="consumer_key" value="<?php echo $consumer_key; ?>">
 		</div>
 	</div>
+
+	
 	<div class="form-group form-actions">
 		<div class="group-controls">
 			<button type="submit" class="btn btn-important"><?php echo _t('ext.pocketButton.configure.connect_to_pocket'); ?></button>
 		</div>
 	</div>
 </form>
-<?php endif  ?>
+<?php else: ?>
+	<p class="alert alert-warn">
+		<?php echo _t('ext.pocketButton.configure.extension_disabled'); ?>
+	</p>
+<?php endif ?>
 
 <?php if (!empty($username)): ?>
-	<div class="form-group">
-		<label class="group-name"><?php echo _t('ext.pocketButton.configure.username'); ?></label>
-		<div class="group-controls">
-			<?php echo $username; ?>
-		</div>
-	</div>
-<?php endif  ?>
+	<p><b><?php echo _t('ext.pocketButton.configure.username'); ?>:</b> <?php echo $username; ?></p>
+<?php endif ?>
+
 <?php if (!empty($access_token)): ?>
-	<div class="form-group">
-		<label class="group-name"><?php echo _t('ext.pocketButton.configure.access_token'); ?></label>
-		<div class="group-controls">
-			<?php echo $access_token; ?>
-		</div>
-	</div>
-<?php endif  ?>
+	<p><b><?php echo _t('ext.pocketButton.configure.access_token'); ?>:</b> <?php echo $access_token; ?></p>
+<?php endif ?>

@@ -8,6 +8,7 @@ return array(
 			'username' => 'Benutzername',
 			'access_token' => 'Zugangs-Token',
 			'keyboard_shortcut' => 'Tastaturkürzel',
+			'extension_disabled' => 'Du must die Erweiterung aktivieren bevor du dich mit Pocket verbinden kannst!',
 		),
 		'notifications' => array(
 			'added_article_to_pocket' => '<i>\'%s\'</i> erfolgreich zu Pocket hinzugefügt!',

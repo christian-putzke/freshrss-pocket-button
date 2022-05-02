@@ -8,6 +8,7 @@ return array(
 			'username' => 'Username',
 			'access_token' => 'Access Token',
 			'keyboard_shortcut' => 'Keyboard shortcut',
+			'extension_disabled' => 'You need to enable the extension before you can connect to Pocket!',
 		),
 		'notifications' => array(
 			'added_article_to_pocket' => 'Successfully added <i>\'%s\'</i> to Pocket!',

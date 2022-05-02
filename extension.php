@@ -16,13 +16,11 @@ class PocketButtonExtension extends Minz_Extension {
 	}
 
 	public function handleConfigureAction() {
+		$this->registerTranslates();
+		
 		if (Minz_Request::isPost()) {
-			$consumer_key = Minz_Request::param('consumer_key', '');
 			$keyboard_shortcut = Minz_Request::param('keyboard_shortcut', '');
-
-			FreshRSS_Context::$user_conf->pocket_consumer_key = $consumer_key;
 			FreshRSS_Context::$user_conf->pocket_keyboard_shortcut = $keyboard_shortcut;
-
 			FreshRSS_Context::$user_conf->save();
 		}
 	}

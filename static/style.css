@@ -13,3 +13,11 @@
 .notification.pocket_button_good {
     background: #1abc9c;
 }
+
+input#consumer_key {
+    width: 300px;
+}
+
+input#keyboard_shortcut {
+    width: 30px;
+}

@@ -54,8 +54,12 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 
 	public function requestAccessAction()
 	{
+		$consumer_key = Minz_Request::param('consumer_key', '');
+		FreshRSS_Context::$user_conf->pocket_consumer_key = $consumer_key;
+		FreshRSS_Context::$user_conf->save();
+
 		$post_data = array(
-			'consumer_key' => FreshRSS_Context::$user_conf->pocket_consumer_key,
+			'consumer_key' => $consumer_key,
 			'redirect_uri' => 'not_needed'
 		);
 
@@ -99,7 +103,7 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 
 		$result = $this->curlPostRequest('https://getpocket.com/v3/add', $post_data);
 		$result['response'] = array('title' => $entry->title());
-		
+
 		echo json_encode($result);
 	}
 
