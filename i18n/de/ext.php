@@ -8,7 +8,8 @@ return array(
 				<li>Gehe zum <a href="https://getpocket.com/developer/apps/" target="_blank">Pocket Entwickler-Portal</a></li>
 				<li>Erstelle eine Applikation</li>
 				<li>Gebe deinen Verbraucher-Schlüssel (Consumer Key) ein und drücke auf "Mit Pocket verbinden"</li>
-			</ul>',
+			</ul>
+			<span>Weitere Details findest auf <a href="https://github.com/christian-putzke/freshrss-pocket-button" target="_blank">GitHub</a>!',
 			'connect_to_pocket' => 'Mit Pocket verbinden',
 			'username' => 'Benutzername',
 			'access_token' => 'Zugangs-Token',
