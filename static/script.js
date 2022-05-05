@@ -10,7 +10,9 @@ function add_to_pocket(active) {
     }
 
     var pocketButtonImg = pocketButton.find("img");
-    pocketButtonImg.attr("src", pocket_button_vars.icons.adding_to_pocket);
+    pocketButtonImg.addClass("disabled");
+    var loadingAnimation = pocketButton.find(".lds-dual-ring");
+    loadingAnimation.removeClass("disabled");
 
     if (pending_entries[active.attr('id')]) {
         return false;
@@ -40,6 +42,9 @@ function add_to_pocket(active) {
                 openNotification(pocket_button_vars.i18n.failed_to_add_article_to_pocket.replace('%s', response.errorCode), 'pocket_button_bad');
             }
         }
+
+        pocketButtonImg.removeClass("disabled");
+        loadingAnimation.addClass("disabled");
     }).fail(function(data) {
         pocketButtonImg.attr("src", pocket_button_vars.icons.add_to_pocket);
 

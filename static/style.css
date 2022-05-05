@@ -25,3 +25,36 @@ input#keyboard_shortcut {
 .listedNumbers {
     list-style-type: decimal;
 }
+
+.disabled {
+    display: none !important;
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    line-height: 12px;
+    margin: -4px 0 0 -2px;
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #e74c3c;
+    border-color: #e74c3c transparent #e74c3c transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -10,7 +10,6 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 			'keyboard_shortcut' => FreshRSS_Context::$user_conf->pocket_keyboard_shortcut,
 			'icons' => array(
 				'add_to_pocket' => $extension->getFileUrl('add_to_pocket.svg', 'svg'),
-				'adding_to_pocket' => $extension->getFileUrl('adding_to_pocket.svg', 'svg'),
 				'added_to_pocket' => $extension->getFileUrl('added_to_pocket.svg', 'svg'),
 			),
 			'i18n' => array(
