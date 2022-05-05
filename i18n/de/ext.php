@@ -4,6 +4,11 @@ return array(
 	'pocketButton' => array(
 		'configure' => array(
 			'consumer_key' => 'Verbraucher-Schlüssel',
+			'consumer_key_description' => '<ul class="listedNumbers">
+				<li>Gehe zum <a href="https://getpocket.com/developer/apps/" target="_blank">Pocket Entwickler-Portal</a></li>
+				<li>Erstelle eine Applikation</li>
+				<li>Gebe deinen Verbraucher-Schlüssel (Consumer Key) ein und drücke auf "Mit Pocket verbinden"</li>
+			</ul>',
 			'connect_to_pocket' => 'Mit Pocket verbinden',
 			'username' => 'Benutzername',
 			'access_token' => 'Zugangs-Token',
