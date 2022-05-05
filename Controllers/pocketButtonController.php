@@ -80,6 +80,18 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 		}
 	}
 
+	public function revokeAccessAction()
+	{
+		FreshRSS_Context::$user_conf->pocket_request_token = '';
+		FreshRSS_Context::$user_conf->pocket_access_token = '';
+		FreshRSS_Context::$user_conf->pocket_consumer_key = '';
+		FreshRSS_Context::$user_conf->pocket_username = '';
+		FreshRSS_Context::$user_conf->save();
+
+		$url_redirect = array('c' => 'extension', 'a' => 'configure', 'params' => array('e' => 'Pocket Button'));
+		Minz_Request::forward($url_redirect);
+	}
+
 	public function shareAction()
 	{
 		$this->view->_layout(false);

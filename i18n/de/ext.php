@@ -9,6 +9,8 @@ return array(
 			'access_token' => 'Zugangs-Token',
 			'keyboard_shortcut' => 'Tastaturkürzel',
 			'extension_disabled' => 'Du must die Erweiterung aktivieren bevor du dich mit Pocket verbinden kannst!',
+			'connected_to_pocket' => 'Du bist über den Account <b>%s</b> mit dem Zugangs-Token <b>%s</b> mit Pocket verbunden!',
+			'revoke_access' => 'Verbindung zu Pocket trennen!',
 		),
 		'notifications' => array(
 			'added_article_to_pocket' => '<i>\'%s\'</i> erfolgreich zu Pocket hinzugefügt!',

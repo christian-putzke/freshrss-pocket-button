@@ -21,7 +21,7 @@
 	</div>
 </form>
 
-<?php if ($this->isEnabled()): ?>
+<?php if ($this->isEnabled() && empty($username) && empty($access_token)): ?>
 <form action="<?php echo _url('pocketButton', 'requestAccess'); ?>" method="post">
 	<input type="hidden" name="_csrf" value="<?php echo FreshRSS_Auth::csrfToken(); ?>" />
 	<div class="form-group">
@@ -38,16 +38,22 @@
 		</div>
 	</div>
 </form>
-<?php else: ?>
-	<p class="alert alert-warn">
+<?php elseif (!$this->isEnabled()): ?>
+	<p class="alert alert-error">
 		<?php echo _t('ext.pocketButton.configure.extension_disabled'); ?>
 	</p>
 <?php endif ?>
 
-<?php if (!empty($username)): ?>
-	<p><b><?php echo _t('ext.pocketButton.configure.username'); ?>:</b> <?php echo $username; ?></p>
-<?php endif ?>
-
-<?php if (!empty($access_token)): ?>
-	<p><b><?php echo _t('ext.pocketButton.configure.access_token'); ?>:</b> <?php echo $access_token; ?></p>
+<?php if (!empty($username) || !empty($access_token)): ?>
+	<p class="alert alert-success">
+		<?php echo _t('ext.pocketButton.configure.connected_to_pocket', $username, $access_token); ?>
+	</p>
+	<form action="<?php echo _url('pocketButton', 'revokeAccess'); ?>" method="post">
+		<input type="hidden" name="_csrf" value="<?php echo FreshRSS_Auth::csrfToken(); ?>" />
+		<div class="form-group form-actions">
+			<div class="group-controls">
+				<button type="submit" class="btn btn-important"><?php echo _t('ext.pocketButton.configure.revoke_access'); ?></button>
+			</div>
+		</div>
+	</form>
 <?php endif ?>
