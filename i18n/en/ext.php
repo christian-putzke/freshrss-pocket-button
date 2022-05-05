@@ -15,7 +15,7 @@ return array(
 			'access_token' => 'Access Token',
 			'keyboard_shortcut' => 'Keyboard shortcut',
 			'extension_disabled' => 'You need to enable the extension before you can connect to Pocket!',
-			'connected_to_pocket' => 'You are connected to Pocket!',
+			'connected_to_pocket' => 'Your are connected to Pocket with the account <b>%s</b> using the access token <b>%s</b>.',
 			'revoke_access' => 'Disconnect from Pocket!'
 		),
 		'notifications' => array(
