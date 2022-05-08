@@ -9,7 +9,6 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 		$this->view->pocket_button_vars = json_encode(array(
 			'keyboard_shortcut' => FreshRSS_Context::$user_conf->pocket_keyboard_shortcut,
 			'icons' => array(
-				'add_to_pocket' => $extension->getFileUrl('add_to_pocket.svg', 'svg'),
 				'added_to_pocket' => $extension->getFileUrl('added_to_pocket.svg', 'svg'),
 			),
 			'i18n' => array(
@@ -91,7 +90,7 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 		Minz_Request::forward($url_redirect);
 	}
 
-	public function shareAction()
+	public function addAction()
 	{
 		$this->view->_layout(false);
 
