@@ -1,8 +1,10 @@
 # FreshRSS Pocket Button
 
-[FreshRSS](https://freshrss.org/) extension which adds a [Pocket](https://getpocket.com/) button to your article entries.
+A [FreshRSS](https://freshrss.org/) extension which adds a better [Pocket](https://getpocket.com/) sharing integration.
 
-It can be used to add articles to Pocket with a single button tap or a custom keyboard shortcut.
+The existing Pocket sharing functionality of FreshRSS always opens a new tab which you have to manually close after sharing. You also have to stay logged in into Pocket.
+
+With this extension you can simply press the Pocket Button next to an article or a custom keyboard shortcut to share it with Pocket. Everything else happens in the background while you can continue reading articles without any further interruptions.
 
 ## Download and setup
 
