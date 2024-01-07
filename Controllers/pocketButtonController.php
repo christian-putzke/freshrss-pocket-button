@@ -71,7 +71,8 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 			$redirect_url = str_replace('&', urlencode('&'), $redirect_url);
 			$pocket_redirect_url = 'https://getpocket.com/auth/authorize?request_token=' . $result['response']->code . '&redirect_uri=' . $redirect_url;
 
-			Minz_Request::forward($pocket_redirect_url);
+			header('Location: ' . $pocket_redirect_url);
+			exit();
 		} else {
 			$url_redirect = array('c' => 'extension', 'a' => 'configure', 'params' => array('e' => 'Pocket Button'));
 			Minz_Request::bad(_t('ext.pocketButton.notifications.request_access_failed', $result['errorCode']), $url_redirect);
