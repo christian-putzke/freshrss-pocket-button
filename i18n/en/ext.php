@@ -6,7 +6,7 @@ return array(
 			'consumer_key' => 'Consumer Key',
 			'consumer_key_description' => '<ul class="listedNumbers">
 				<li>Go to <a href="https://getpocket.com/developer/apps/" target="_blank">Pocket\'s Developer Portal</a></li>
-				<li>Create an Application</li>
+				<li>Create an Application with at least the \'Add\' permission</li>
 				<li>Enter your Consumer Key and hit "Connect to Pocket"</li>
 			</ul>
 			<span>Details can be found on <a href="https://github.com/christian-putzke/freshrss-pocket-button" target="_blank">GitHub</a>!',
