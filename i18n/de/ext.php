@@ -27,6 +27,7 @@ return array(
 			'authorized_failed' => 'Autorisierung fehlgeschlagen! Pocket API Fehlercode: %s',
 			'request_access_failed' => 'Zugangsanfrage fehlgeschlagen! Pocket API Fehlercode: %s',
 			'article_not_found' => 'Artikel konnte nicht gefunden werden!',
+			'authorization_revoked' => 'Autorisierung erfolgreich widerrufen!'
 		)
 	),
 );

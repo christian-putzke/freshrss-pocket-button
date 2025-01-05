@@ -88,7 +88,8 @@ class FreshExtension_pocketButton_Controller extends Minz_ActionController
 		FreshRSS_Context::$user_conf->save();
 
 		$url_redirect = array('c' => 'extension', 'a' => 'configure', 'params' => array('e' => 'Pocket Button'));
-		Minz_Request::forward($url_redirect);
+
+		Minz_Request::good(_t('ext.pocketButton.notifications.authorization_revoked'), $url_redirect);
 	}
 
 	public function addAction()
