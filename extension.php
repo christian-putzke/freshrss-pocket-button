@@ -21,4 +21,16 @@ class PocketButtonExtension extends Minz_Extension {
 			FreshRSS_Context::$user_conf->save();
 		}
 	}
+
+	public function isConfigured() {
+		if (FreshRSS_Context::$user_conf->pocket_access_token == '') {
+			return false;
+		}
+
+		if (FreshRSS_Context::$user_conf->pocket_consumer_key == '') {
+			return false;
+		}
+
+		return true;
+	}
 }
