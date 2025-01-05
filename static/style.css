@@ -1,36 +1,36 @@
-.notification.pocket_button_good,
-.notification.pocket_button_bad {
+.notification.pb_good,
+.notification.pb_bad {
     position: fixed;
     color: #fff;
     left: 20%;
     right: 20%;
 }
 
-.notification.pocket_button_bad {
+.notification.pb_bad {
     background: #e74c3c;
 }
 
-.notification.pocket_button_good {
+.notification.pb_good {
     background: #1abc9c;
 }
 
-input#consumer_key {
+input.pb_consumer_key {
     width: 300px;
 }
 
-input#keyboard_shortcut {
+input.pb_keyboard_shortcut {
     width: 30px;
 }
 
-.listedNumbers {
+.pb_listedNumbers {
     list-style-type: decimal;
 }
 
-.disabled {
+.pb_disabled {
     display: none !important;
 }
 
-.lds-dual-ring {
+.pb_lds-dual-ring {
     display: inline-block;
     width: 12px;
     height: 12px;
@@ -39,7 +39,7 @@ input#keyboard_shortcut {
     margin: -4px 0 0 -2px;
 }
 
-.lds-dual-ring:after {
+.pb_lds-dual-ring:after {
     content: " ";
     display: block;
     width: 12px;
@@ -47,10 +47,10 @@ input#keyboard_shortcut {
     border-radius: 50%;
     border: 2px solid #e74c3c;
     border-color: #e74c3c transparent #e74c3c transparent;
-    animation: lds-dual-ring 1.2s linear infinite;
+    animation: pb_lds-dual-ring 1.2s linear infinite;
 }
 
-@keyframes lds-dual-ring {
+@keyframes pb_lds-dual-ring {
     0% {
         transform: rotate(0deg);
     }

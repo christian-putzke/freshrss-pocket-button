@@ -55,10 +55,10 @@ function add_to_pocket(pocketButton, active) {
     }
 
     let pocketButtonImg = pocketButton.querySelector("img");
-    pocketButtonImg.classList.add("disabled");
+    pocketButtonImg.classList.add("pb_disabled");
 
-    let loadingAnimation = pocketButton.querySelector(".lds-dual-ring");
-    loadingAnimation.classList.remove("disabled");
+    let loadingAnimation = pocketButton.querySelector(".pb_lds-dual-ring");
+    loadingAnimation.classList.remove("pb_disabled");
 
     let activeId = active.getAttribute('id');
 
@@ -76,8 +76,8 @@ function add_to_pocket(pocketButton, active) {
     request.onload = function(e) {
         delete pending_entries[activeId];
 
-        pocketButtonImg.classList.remove("disabled");
-        loadingAnimation.classList.add("disabled");
+        pocketButtonImg.classList.remove("pb_disabled");
+        loadingAnimation.classList.add("pb_disabled");
 
         if (this.status != 200) {
             return request.onerror(e);
@@ -90,12 +90,12 @@ function add_to_pocket(pocketButton, active) {
 
         if (response.status === 200) {
             pocketButtonImg.setAttribute("src", pocket_button_vars.icons.added_to_pocket);
-            openNotification(pocket_button_vars.i18n.added_article_to_pocket.replace('%s', response.response.title), 'pocket_button_good');
+            openNotification(pocket_button_vars.i18n.added_article_to_pocket.replace('%s', response.response.title), 'pb_good');
         } else {
             if (response.status === 404) {
-                openNotification(pocket_button_vars.i18n.article_not_found, 'pocket_button_bad');
+                openNotification(pocket_button_vars.i18n.article_not_found, 'pb_bad');
             } else {
-                openNotification(pocket_button_vars.i18n.failed_to_add_article_to_pocket.replace('%s', response.errorCode), 'pocket_button_bad');
+                openNotification(pocket_button_vars.i18n.failed_to_add_article_to_pocket.replace('%s', response.errorCode), 'bp_bad');
             }
         }
     };
@@ -103,8 +103,8 @@ function add_to_pocket(pocketButton, active) {
     request.onerror = function(e) {
         delete pending_entries[activeId];
 
-        pocketButtonImg.classList.remove("disabled");
-        loadingAnimation.classList.add("disabled");
+        pocketButtonImg.classList.remove("pb_disabled");
+        loadingAnimation.classList.add("pb_disabled");
 
         badAjax(this.status == 403);
     };
