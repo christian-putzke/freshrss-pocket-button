@@ -2,7 +2,7 @@
 
 ... and will no longer be available after July 8, 2025.
 
-Therefore I switched to an open source alternative called [Readeck](https://readeck.org/).
+Therefore I switched to an open source alternative called [Readeck](https://readeck.org/) and archived this repository.
 
 If you like my Pocket button FreshRSS extension and also switched to alternative I can recommend the eXtensions from [Joedmin](https://github.com/Joedmin) who forked and adjusted this plugin to work with [Readeck](https://github.com/Joedmin/xExtension-readeck-button) and [Wallabck](https://github.com/Joedmin/xExtension-wallabag-button).
 
